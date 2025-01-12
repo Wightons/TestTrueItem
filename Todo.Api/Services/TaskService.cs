@@ -32,5 +32,18 @@ namespace Todo.Api.Services
                 await _todoContext.SaveChangesAsync();
             }
         }
+
+        public async Task Update(TaskModel taskModel)
+        {
+            var existingTask = await _todoContext.Tasks.FindAsync(taskModel.Id);
+            if (existingTask != null)
+            {
+                existingTask.Title = taskModel.Title;
+                existingTask.Text = taskModel.Text;
+
+                await _todoContext.SaveChangesAsync();
+            }
+        }
+
     }
 }

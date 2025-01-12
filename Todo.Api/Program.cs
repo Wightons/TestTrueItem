@@ -1,9 +1,19 @@
 using Todo.Api;
+using Todo.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<TodoContext>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowAngularOrigin",
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                      });
+});
 
+builder.Services.AddDbContext<TodoContext>();
+builder.Services.AddScoped<TaskService>();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -21,6 +31,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAngularOrigin");
 
 app.UseAuthorization();
 

@@ -1,0 +1,21 @@
+.operations {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  background-color: lightgray;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

@@ -1,0 +1,20 @@
+.task {
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 20px;
+  user-select: none;
+  box-sizing: border-box; /* Ensure padding does not affect width */
+  display: flex;
+  flex-direction: column; /* Stack content vertically inside the task */
+  background-color: #f5f5f5; /* Optional: Add background color */
+}
+
+.task .text {
+  max-width: 80%;
+}
+
+.task .footer {
+  margin-top: 10px;
+  text-align: right; /* Align footer content to the right */
+}
