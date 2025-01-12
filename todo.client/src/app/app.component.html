@@ -1,11 +1,13 @@
 <div class="modal" [hidden]="!isModalExpand">
-  <form (submit)="onCreation($event.preventDefault())">
+  <form (submit)="onCreation($event.preventDefault())" ngNativeValidate>
     <div>
       <input
         type="text"
         placeholder="title"
         [(ngModel)]="newTask.title"
         [ngModelOptions]="{ standalone: true }"
+        required
+        maxlength="25"
       />
     </div>
     <div>
@@ -14,6 +16,8 @@
         placeholder="text"
         [(ngModel)]="newTask.text"
         [ngModelOptions]="{ standalone: true }"
+        required
+        maxlength="1024"
       />
     </div>
     <div style="display: flex">

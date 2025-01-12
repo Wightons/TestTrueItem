@@ -8,14 +8,16 @@
   position: absolute;
   right: 50%;
   left: 50%;
-  background-color: lightgray;
+  background-color: #eaeaea;
   width: fit-content;
   padding: 20px;
+  border: 1px solid #a8a8a8;
   border-radius: 20px;
 }
 
 .panel {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 10px;
+  padding: 10px;
 }
