@@ -47,5 +47,17 @@ namespace Todo.Api.Controllers
             await _taskService.Delete(id);
             return NoContent();
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] TaskModel taskModel)
+        {
+            if (taskModel == null)
+            {
+                return BadRequest("Task model cannot be null.");
+            }
+
+            await _taskService.Update(taskModel);
+            return NoContent();
+        }
     }
 }

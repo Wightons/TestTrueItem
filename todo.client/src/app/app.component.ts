@@ -2,7 +2,7 @@ import { TaskService } from './services/task.service';
 import { Component } from '@angular/core';
 import { TaskComponent } from './components/task/task.component';
 import { Task } from './models/task-model';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -54,5 +54,11 @@ export class AppComponent {
 
   loadTasks() {
     this.tasks$ = this.service.getAll();
+  }
+
+  onTaskDeleted(taskId: number) {
+    this.tasks$ = this.tasks$!.pipe(
+      map((tasks: Task[]) => tasks.filter((task) => task.id !== taskId))
+    );
   }
 }

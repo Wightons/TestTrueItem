@@ -28,6 +28,6 @@
 <hr />
 <div class="panel">
   @for (item of (tasks$ | async); track item.id) {
-  <app-task [task]="item"></app-task>
+  <app-task [task]="item" (taskDeleted)="onTaskDeleted($event)"></app-task>
   }
 </div>

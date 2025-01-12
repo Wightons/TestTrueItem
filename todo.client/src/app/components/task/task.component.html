@@ -1,19 +1,25 @@
 <div class="task">
   <div>
     @if(task?.isTitleEdited){
-    <input #titleInput [value]="task?.title" (blur)="onTitleBlur()" />
+    <input #titleInput [(ngModel)]="task!.title" (blur)="onTitleBlur()" />
     }@else{
     <h3 (dblclick)="onTitleEdit()">{{ task?.title }}</h3>
     }
   </div>
   <div>
     @if(task?.isTextEdited){
-    <textarea #textInput class="text">{{ task?.text }}</textarea>
+    <textarea
+      #textInput
+      [(ngModel)]="task!.text"
+      class="text"
+      (blur)="onTextBlur()"
+      >{{ task?.text }}</textarea
+    >
     }@else {
     <p class="text" (dblclick)="onTextEdit()">{{ task?.text }}</p>
     }
   </div>
   <div class="footer">
-    <button>Delete</button>
+    <button (click)="onDelete()">Delete</button>
   </div>
 </div>

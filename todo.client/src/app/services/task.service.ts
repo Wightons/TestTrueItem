@@ -1,6 +1,6 @@
+import { Task } from './../models/task-model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Task } from '../models/task-model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,14 @@ export class TaskService {
   }
 
   create(task: Task) {
-    const taskModel = { id: 0, title: task.title, text: task.text };
-    return this.http.post(this.url, taskModel);
+    return this.http.post(this.url, task);
+  }
+
+  update(task: Task) {
+    return this.http.put(this.url, task);
+  }
+
+  delete(id: number) {
+    return this.http.delete(this.url + `${id}`);
   }
 }
